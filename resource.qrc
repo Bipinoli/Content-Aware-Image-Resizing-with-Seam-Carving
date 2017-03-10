@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>images/dock.png</file>
+        <file>images/open.png</file>
+        <file>images/save.png</file>
+        <file>images/saveAs.png</file>
+        <file>images/info.png</file>
+        <file>images/close.png</file>
+        <file>images/process.png</file>
+        <file>images/color-fill-icon.png</file>
+        <file>images/Color-picker-icon.png</file>
+        <file>images/preferences-color-icon.png</file>
+    </qresource>
+</RCC>
