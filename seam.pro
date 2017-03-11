@@ -25,10 +25,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    seamcarver.cpp
+    seamcarver.cpp \
+    childqlabel.cpp
 
 HEADERS  += mainwindow.h \
-    seamcarver.h
+    seamcarver.h \
+    childqlabel.h \
+    globalvariables.h
 
 FORMS    += mainwindow.ui
 

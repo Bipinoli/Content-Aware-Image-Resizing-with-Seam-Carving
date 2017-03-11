@@ -3,6 +3,8 @@
 
 #include <QImage>
 #include <QMainWindow>
+#include "childqlabel.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -38,6 +40,7 @@ private:
     Ui::MainWindow *ui;
     std::string fileName;
     QImage final;
+    childQlabel *imageLabel;
 //    QPixmap energy;
 //    QPixmap horizontalSeams;
 //    QPixmap verticalSeams;

@@ -1,6 +1,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+// for mouse press
+#include "childqlabel.h"
+
+// global variables used by childqlabel.cpp as well
+#include "globalvariables.h"
+int IMAGE_COLS_ = -1;
+int IMAGE_ROWS_ = -1;
+
 #include <QString>
 #include <QFileDialog>
 #include <QDebug>
@@ -11,6 +19,7 @@
 
 #include <cassert>
 #include "seamcarver.h"
+#include "childqlabel.h"
 
 double vCompressPercent = 0.25;
 double hCompressPercent = 0.25;
@@ -27,9 +36,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->imgLabel1->setPixmap(pix);
     ui->imgLabel2->setPixmap(pix);
 
-    QWidget* widget = new QWidget;
-    ui->tabWidget->addTab(widget, "Seam");
-    QLabel* seamLabel;
+//    QWidget* widget = new QWidget;
+//    ui->tabWidget->addTab(widget, "Seam");
+//    QLabel* seamLabel;
+
+    imageLabel = new childQlabel;
+    imageLabel->setBackgroundRole(QPalette::Base);
+    imageLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+    imageLabel->setScaledContents(true);
+
 
 }
 
@@ -49,6 +64,11 @@ void MainWindow::on_actionOpen_triggered()
         ui->imgLabel1->setPixmap(pix);
         ui->imgLabel2->setPixmap(pix);
     }
+    // Updating the global variables
+    Mat_<Vec3b> temp = imread(this->fileName);
+    IMAGE_COLS_ = temp.cols;
+    IMAGE_ROWS_ = temp.rows;
+    temp.release();
 }
 
 void MainWindow::on_actionSave_triggered()
@@ -89,6 +109,11 @@ void MainWindow::on_actionProcess_triggered()
     ui->imgLabel1->setPixmap(QPixmap::fromImage(this->final));
 
     QMessageBox::information(this, "Done", "Done!!");
+
+    // tabs
+    QWidget* widget = new QWidget;
+    ui->tabWidget->addTab(widget, "Seam");
+    QLabel* seamLabel;
 }
 
 
@@ -114,6 +139,7 @@ void MainWindow::opencvStuff(string fileName){
     } else {
         qDebug() << "Processing!! please wait";
     }
+
 
 //        imshow("Original Image", image);
     SeamCarver s(image);
@@ -160,6 +186,7 @@ void MainWindow::opencvStuff(string fileName){
       cvtColor(s.getImage(), qtImage, CV_BGR2RGB);
       this->final =  QImage(qtImage.data, qtImage.cols, qtImage.rows,
                         qtImage.step, QImage::Format_RGB888).copy();
+
 //    temp = s.getImage();
 //    cvtColor(temp, temp, CV_BGR2RGB);
 //    this->final = QPixmap::fromImage(QImage(image.data,
