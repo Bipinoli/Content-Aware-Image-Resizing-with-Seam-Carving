@@ -8,3 +8,8 @@
 
 to learn about it: https://www.youtube.com/watch?v=qadw0BRKeMk.
 Check out some sample outputs in: <b>someOutputs</b> floder
+
+### Authors
+- Bipin Oli bipinoli90@gmail.com
+- Aayush Gautam agautam1997@gmail.com
+- Kuldip Bhutoria 072bct518@pcampus.edu.np
