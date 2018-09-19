@@ -12,4 +12,4 @@ Check out some sample outputs in: <b>someOutputs</b> floder
 ### Authors
 - Bipin Oli bipinoli90@gmail.com
 - Aayush Gautam agautam1997@gmail.com
-- Kuldip Bhutoria 072bct518@pcampus.edu.np
+- Kuldip Bhutoria bhutoriakuldip1998@gmail.com
